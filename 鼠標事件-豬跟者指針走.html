@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            position: relative;
+        }
+        img {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <img id="img" src="http://img.biaoqing.com/work/20170401/121924014.gif">
+    <script>
+      window.onload = function() {
+        var img = document.getElementById('img');
+          //利用mousemove讓事件可重複觸發 
+          img.onmousemove = function(e) {
+              //一般寫法
+              var pointX = e.pageX;
+              var pointY = e.pageY;
+              //具兼容性寫法
+              /*var pointX = e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
+              var pointY = e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);*/
+              
+              //()內減去的數字是為了讓鼠針可置於圖片中間
+              img.style.left = (pointX-100) + 'px';
+              img.style.top = (pointY-130) + 'px';
+          };
+      };
+    </script>
+</body>
+</html>
